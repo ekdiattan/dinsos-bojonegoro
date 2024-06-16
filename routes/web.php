@@ -18,6 +18,7 @@ Route::get('/admin', [AuthController::class, 'view']);
 Route::post('/register', [UserController::class, 'storeuser']);
 
 Route::get('/form', [FormController::class, 'index']);
+Route::post('/formsurvey', [FormController::class, 'store']);
 
 Route::get('/layanan',[ LayananController::class,'view']);
 
