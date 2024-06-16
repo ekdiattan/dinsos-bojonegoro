@@ -11,7 +11,7 @@ class AuthController extends Controller
     public function loginPost(Request $request)
     {
         $credetials = [
-            
+
         'email' => $request->email,
         'password' => $request->password
 
@@ -29,5 +29,10 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect('/login');
+    }
+
+    public function view()
+    {
+        return view('login', ['title' => 'Dinas Sosial Bojonegoro']);
     }
 }

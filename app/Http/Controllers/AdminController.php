@@ -10,6 +10,6 @@ class AdminController extends Controller
     public function dashboard()
     {
 
-        return view('dataresponden',['title' => 'Dinas Sosial Bojonegoro']);
+        return view('admin.dataresponden.index',['title' => 'Dinas Sosial Bojonegoro']);
     }
 }

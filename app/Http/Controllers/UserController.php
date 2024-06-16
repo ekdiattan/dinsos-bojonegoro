@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
+    public function view()
+    {
+        $user = User::all();
+        return view('admin.user.index', ['title' => 'Dinas Sosial Bojonegoro', 'user' => $user]);
+    }
+
     public function storeuser(Request $request)
     {
         $user = User::where('email', $request->email)->first();

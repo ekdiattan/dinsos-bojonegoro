@@ -33,7 +33,7 @@
       <div class="profil-survey3">
         <h3>Profile Responden</h3>
         <br />
-        <form action="" method="post">
+        <form action="/profileresponden" method="post">
           <table class="table1-survey3">
             <tr>
               <td width="350">Nama Perusahaan / Instansi / Perorangan</td>
