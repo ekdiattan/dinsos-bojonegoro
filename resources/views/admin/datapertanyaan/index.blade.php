@@ -5,11 +5,6 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Data Pertanyaan</h4>
-          <div class="d-flex justify-content-end mb-3">
-            <a href="" class="btn btn-primary">
-              <i class="ti-plus"></i> Add Data
-            </a>
-          </div>
           <div class="table-responsive pt-3">
             <table class="table table-bordered">
               <thead>
@@ -45,4 +40,32 @@
       </div>
     </div>
   </div>
+  
+  @if(session('success'))
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.6/dist/sweetalert2.all.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      Swal.fire({
+        title: 'Success!',
+        text: "{{ session('success') }}",
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+    });
+  </script>
+  @endif
+  
+  @if(session('error'))
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.6/dist/sweetalert2.all.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      Swal.fire({
+        title: 'Error!',
+        text: "{{ session('error') }}",
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
+  </script>
+  @endif
 @endsection

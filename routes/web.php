@@ -26,11 +26,14 @@ Route::get('/layanan',[ LayananController::class,'view']);
 Route::group(['middleware' => 'auth'], function () 
 {
     Route::get('/admin-dashboard', [AdminController::class, 'dashboard']);
+    Route::get('/hasil-pertanyaan/{id}', [AdminController::class, 'detail']);
 
     Route::get('/logout', [AuthController::class, 'logout']);
 
     Route::get('/datauser', [UserController::class, 'view']);
 
     Route::get('/datapertanyaan', [PertanyaanController::class, 'view']);
+    Route::get('/tambahpertanyaan', [PertanyaanController::class, 'tambahpertanyaanview']);
+    Route::post('/tambahpertanyaan', [PertanyaanController::class, 'tambahpertanyaan']);
 });
 

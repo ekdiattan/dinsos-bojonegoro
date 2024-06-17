@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ asset('css/isimenu.css') }}" />
+  <link rel="shortcut icon" href="https://wisatabojonegoro.com/wp-content/uploads/2019/05/Logo-Kabupaten-Bojonegoro.png" />
     <title>SKM DINAS SOSIAL</title>
 </head>
 <body>
@@ -27,7 +28,7 @@
         <div class="profil-survey3">
             <h3>Profile Responden</h3>
             <br />
-            <form action="/formsurvey" method="post">
+            <form id="surveyForm" action="/formsurvey" method="post">
                 @csrf
                 <table class="table1-survey3">
                     <tr>
@@ -74,24 +75,33 @@
             <h3>Pendapat Responden Tentang Pelayanan</h3>
             <br />
             <div class="grid-container">
-                @foreach ($pertanyaan as $pertanyaans)
+                @foreach ($pertanyaan as $item)
                 <div class="service__card">
-                    <h4>{{ $pertanyaans->Pertanyaan }}</h4>
+                    <h4>{{ $item->Pertanyaan }}</h4>
                     <br />
                     <hr />
                     <br />
                     <table>
                         <tr>
-                            <td><input type="radio" name="NilaiSangatBaik{{ $pertanyaans->PertanyaanId}}" value=true /> Sangat Baik</td>
-                            <td><input type="radio" name="NilaiKurangBaik{{ $pertanyaans->PertanyaanId}}" value=true /> Kurang Baik</td>
+                            <td>
+                                <input type="radio" name="nilai_{{$item->PertanyaanId}}" value="Sangat Baik" checked> Sangat Baik
+                            </td>
+                            <td>
+                                <input type="radio" name="nilai_{{$item->PertanyaanId}}" value="Kurang Baik"> Kurang Baik
+                            </td>
                         </tr>
                         <tr>
-                            <td><input type="radio" name="NilaiBaik" value=true /> Baik</td>
-                            <td><input type="radio" name="NilaiTidakBaik" value=true /> Tidak Baik</td>
+                            <td>
+                                <input type="radio" name="nilai_{{$item->PertanyaanId}}" value="Baik"> Baik
+                            </td>
+                            <td>
+                                <input type="radio" name="nilai_{{$item->PertanyaanId}}" value="Tidak Baik"> Tidak Baik
+                            </td>
                         </tr>
                     </table>
                 </div>
-                @endforeach
+            @endforeach
+            
             </div>
         </div>
     </div>
@@ -118,13 +128,5 @@
             <div class="row">Hak Cipta © {{$year}} Dinas Sosial Kabupaten Bojonegoro</div>
         </div>
     </footer>
-    <script>
-        const textarea = document.querySelector("textarea");
-        textarea.addEventListener("keyup", (e) => {
-            textarea.style.height = "63px";
-            let scHeight = e.target.scrollHeight;
-            textarea.style.height = `${scHeight}px`;
-        });
-    </script>
 </body>
 </html>

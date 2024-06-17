@@ -2,14 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Nilai;
+use App\Models\ProfileResponden;
 
 class AdminController extends Controller
 {
 
     public function dashboard()
     {
+        $nilai = Nilai::all();
+        $profileResponden = ProfileResponden::all();
+        
+        return view('admin.dataresponden.index',['title' => 'Dinas Sosial Bojonegoro', 'profileResponden' => $profileResponden, 'nilai' => $nilai]);
+    }
 
-        return view('admin.dataresponden.index',['title' => 'Dinas Sosial Bojonegoro']);
+    public function detail($id)
+    {
+        $profileResponden = ProfileResponden::find($id);
+        $nilai = $profileResponden->nilai;
+        
+        return view('admin.dataresponden.show', ['title' => 'Dinas Sosial Bojonegoro', 'profileResponden' => $profileResponden, 'nilais' => $nilai]);
     }
 }
