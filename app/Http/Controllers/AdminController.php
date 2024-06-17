@@ -20,7 +20,7 @@ class AdminController extends Controller
     {
         $profileResponden = ProfileResponden::find($id);
         $nilai = $profileResponden->nilai;
-        
+
         return view('admin.dataresponden.show', ['title' => 'Dinas Sosial Bojonegoro', 'profileResponden' => $profileResponden, 'nilais' => $nilai]);
     }
 }

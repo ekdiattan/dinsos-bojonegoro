@@ -16,10 +16,11 @@ class ProfileResponden extends Model
 
     protected $guarded = ['ProfileRespondenCreatedAt', 'ProfileRespondenUpdatedAt', 'ProfileRespondenDeletedAt'];
 
-    public function nilai ()
+    public function nilai()
     {
         return $this->hasMany(Nilai::class, 'NilaiRespondenId', 'ProfileRespondenId');
     }
+    
     const CREATED_AT = 'ProfileRespondenCreatedAt';
     const UPDATED_AT = 'ProfileRespondenUpdatedAt';
     const DELETED_AT = 'ProfileRespondenDeletedAt';

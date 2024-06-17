@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SKM DINAS SOSIAL</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-    <link rel="shortcut icon" href="https://wisatabojonegoro.com/wp-content/uploads/2019/05/Logo-Kabupaten-Bojonegoro.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -48,34 +47,12 @@
             </p>
           </div>
           <div class="simple-bar-chart">
-            <div class="item" style="--clr: #5eb344; --val: 80">
-              <div class="label">2019</div>
-              <div class="value">80%</div>
-            </div>
-            <div class="item" style="--clr: #fcb72a; --val: 50">
-              <div class="label">2020</div>
-              <div class="value">50%</div>
-            </div>
-
-            <div class="item" style="--clr: #f8821a; --val: 80">
-              <div class="label">2021</div>
-              <div class="value">80%</div>
-            </div>
-            
-            <div class="item" style="--clr: #e0393e; --val: 65">
-              <div class="label">2022</div>
-              <div class="value">65%</div>
-            </div>
-
-            <div class="item" style="--clr: #963d97; --val: 70">
-              <div class="label">2023</div>
-              <div class="value">70%</div>
-            </div>
-
+            @foreach ($yearData as $yeardatas)
             <div class="item" style="--clr: #069cdb; --val: 50">
-              <div class="label">2024</div>
-              <div class="value">50%</div>
+              <div class="label">{{$yeardatas['year']}}</div>
+              <div class="value">{{$yeardatas['data']}}</div>
             </div>
+            @endforeach
           </div>
           <a href="cekdiagram.html" class="button-24">Cek Diagram</a>
           <div>

@@ -24,7 +24,7 @@
                 </tr>
               </thead>
               <tbody>
-                  @foreach ($user as $item)
+                @foreach ($user as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->name }}</td>
@@ -33,7 +33,7 @@
                         <a href="#">
                             <i class="ti-pencil-alt"></i>
                         </a>
-                        <a href="#">
+                        <a href="/datauser/delete/{{ $item->id}}">
                             <i class="ti-trash"></i>
                         </a>
                     </td>      
@@ -46,4 +46,32 @@
       </div>
     </div>
   </div>
+
+  @if(session('success'))
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.6/dist/sweetalert2.all.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      Swal.fire({
+        title: 'Success!',
+        text: "{{ session('success') }}",
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+    });
+  </script>
+  @endif
+
+  @if(session('error'))
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.6/dist/sweetalert2.all.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      Swal.fire({
+        title: 'Error!',
+        text: "{{ session('error') }}",
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
+  </script>
+  @endif
   @endsection

@@ -31,9 +31,11 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('/logout', [AuthController::class, 'logout']);
 
     Route::get('/datauser', [UserController::class, 'view']);
+    Route::get('/datauser/delete/{id}', [UserController::class, 'destroy']);
 
     Route::get('/datapertanyaan', [PertanyaanController::class, 'view']);
     Route::get('/tambahpertanyaan', [PertanyaanController::class, 'tambahpertanyaanview']);
     Route::post('/tambahpertanyaan', [PertanyaanController::class, 'tambahpertanyaan']);
+    Route::get('/datapertanyaan/delete/{id}', [PertanyaanController::class, 'deletepertanyaan']);
 });
 

@@ -23,13 +23,9 @@
                     <a href="">
                       <i class="ti-pencil-alt"></i>
                     </a>
-                    <a href="">
+                    <a href="/datapertanyaan/delete/{{ $item->PertanyaanId}}">
                       <i class="ti-trash"></i>
                     </a>
-                    <form id="delete-form" action="" method="POST" style="display: none;">
-                      @csrf
-                      @method('DELETE')
-                    </form>
                   </td>
                 </tr>
                 @endforeach
