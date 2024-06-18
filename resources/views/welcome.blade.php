@@ -35,7 +35,6 @@
       <div class="logo2">
         <img src="{{ asset('images/1.jpeg') }}"/>
       </div>
-
       <div class="survey">
         <div class="grid-survey">
           <div class="txt">
@@ -48,8 +47,10 @@
             </p>
           </div>
           <div class="simple-bar-chart">
-            @foreach ($yearData as $yeardatas)
-            <div class="item" style="--clr: #069cdb; --val: 50">
+            @php($colors = ['#069cdb', '#ff7f00', '#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#2a9d8f', '#e9c46a', '#f4a261', '#e76f4f', '#d32f2f', '#8a8a5c', '#2a768c', '#40407a'])
+            @foreach ($yearData as $index => $yeardatas)
+            @php($colorIndex = $index % count($colors))
+            <div class="item" style="--clr: {{$colors[$colorIndex]}}; --val: 50">
               <div class="label">{{$yeardatas['year']}}</div>
               <div class="value">{{$yeardatas['data']}}</div>
             </div>

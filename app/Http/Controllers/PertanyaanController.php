@@ -29,20 +29,20 @@ class PertanyaanController extends Controller
     public function deletepertanyaan(int $id)
     {
         $pertanyaan = Pertanyaan::find($id);
-
         $nilai = Nilai::where('NilaiPertanyaanId', $pertanyaan->PertanyaanId)->get();
-
+        
         foreach ($nilai as $item) 
         {
-            if($item->where('NilaiPertanyaanId', $pertanyaan->PertanyaanId)->count() == 1)
-            {
-                ProfileResponden::where('ProfileRespondenId', $item->NilaiRespondenId)->delete();
-            }
+            $profileResponden = ProfileResponden::where('ProfileRespondenId', $item->NilaiRespondenId)->first();
 
+            if($profileResponden->nilai->count() == 1)
+            {
+                $profileResponden->delete();
+            }
+            
+            $item->delete();
         }
 
-        $item->delete();
-        
         $pertanyaan->delete();
 
         return back()->with('success', 'Data Pertanyaan Has Been Deleted!');
