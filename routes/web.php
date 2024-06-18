@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function ()
 
     Route::get('/datauser', [UserController::class, 'view']);
     Route::get('/datauser/delete/{id}', [UserController::class, 'destroy']);
+    Route::get('/datauser/edit/{id}', [UserController::class, 'editview']);
+    Route::post('/datauser/edit/{id}', [UserController::class, 'edit']);
 
     Route::get('/datapertanyaan', [PertanyaanController::class, 'view']);
     Route::get('/tambahpertanyaan', [PertanyaanController::class, 'tambahpertanyaanview']);

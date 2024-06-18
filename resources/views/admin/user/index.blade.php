@@ -18,7 +18,7 @@
                   <th>
                     Email
                   </th>
-                  <th>
+                  <th style="text-align: center;">
                     Action
                   </th>
                 </tr>
@@ -29,11 +29,11 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->email }}</td>
-                    <td>
-                        <a href="#">
+                    <td style="text-align: center;">
+                        <a href="/datauser/edit/{{ $item->id}}" style="margin: 0 10px;">
                             <i class="ti-pencil-alt"></i>
                         </a>
-                        <a href="/datauser/delete/{{ $item->id}}">
+                        <a href="/datauser/delete/{{ $item->id}}" style="margin: 0 10px;">
                             <i class="ti-trash"></i>
                         </a>
                     </td>      

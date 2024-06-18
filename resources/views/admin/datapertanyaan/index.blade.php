@@ -11,7 +11,7 @@
                 <tr>
                   <th>No</th>
                   <th>Pertanyaan</th>
-                  <th>Action</th>
+                  <th style="text-align: center;">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -19,11 +19,11 @@
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->Pertanyaan }}</td>
-                  <td>
-                    <a href="/datapertanyaan/edit/{{ $item->PertanyaanId}}">
+                  <td style="text-align: center;">
+                    <a style="margin: 0 10px;" href="/datapertanyaan/edit/{{ $item->PertanyaanId}}">
                       <i class="ti-pencil-alt"></i>
                     </a>
-                    <a href="/datapertanyaan/delete/{{ $item->PertanyaanId}}">
+                    <a style="margin: 0 10px;" href="/datapertanyaan/delete/{{ $item->PertanyaanId}}">
                       <i class="ti-trash"></i>
                     </a>
                   </td>

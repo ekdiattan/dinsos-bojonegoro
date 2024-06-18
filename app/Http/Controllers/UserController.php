@@ -41,4 +41,47 @@ class UserController extends Controller
         
         return back()->with('success', 'Data User Has Been Deleted!');
     }
+
+    public function editview($id)
+    {
+        $user = User::find($id);
+        return view('admin.user.edit', ['title' => 'Dinas Sosial Bojonegoro', 'user' => $user]);
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $user = User::find($id);
+        
+        if (!is_null($request->password) || !is_null($request->name) || !is_null($request->email)) 
+        {
+            if (!is_null($request->password)) 
+            {
+                $user->password = Hash::make($request->password);
+            }
+
+            if (!is_null($request->name)) 
+            {
+                $user->name = $request->name;
+            }
+
+            if (!is_null($request->email)) 
+            {
+                $exist = User::where('email', $request->email)->first();
+                if ($exist) 
+                {
+                    return back()->with('error', 'Email already exists');
+                }
+
+                $user->email = $request->email;
+            }
+
+            $user->save();
+            
+        }else
+        {
+            return back()->with('error', 'Nothing to update');
+        }
+
+        return redirect('/datauser')->with('success', 'Data User Has Been Updated!');
+    }
 }

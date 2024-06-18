@@ -13,41 +13,57 @@
     <div class="form-container sign-up-container">
       <form action="/register" method="POST">
         @csrf
-        <h1>Create Account</h1>
-        <span>or use your email for registration</span>
-        <input type="text" placeholder="Name" name="name" />
-        <input type="email" placeholder="Email" name="email" />
-        <input type="password" placeholder="Password" name="password" />
+        <h1>Buat Akun</h1>
+        <span>Admin Survey Kepuasan Masyarakat Dinas Sosial Kabupaten Bojonegoro</span>
+        <img src="{{ asset('images/2.png') }}" style="width: 150px;">
+
+        <input type="text" placeholder="Name" name="name" required/>
+        <input type="email" placeholder="Email" name="email" required/>
+        <input type="password" placeholder="Password" name="password" required />
         <button>Sign Up</button>
       </form>
     </div>
     <div class="form-container sign-in-container">
       <form action="/login" method="POST">
+        <img src="{{ asset('images/2.png') }}" style="width: 200px;">
         @csrf
-        <h1>Sign in</h1>
-        <span>or use your account</span>
-        <input type="email" placeholder="Email" name="email"/>
-        <input type="password" placeholder="Password" name="password"/>
+        <span>Admin Survey Kepuasan Masyarakat Dinas Sosial Kabupaten Bojonegoro</span>
+        <input type="email" placeholder="Email" name="email" required/>
+        <input type="password" placeholder="Password" name="password" required/>
         <br>
-        <button>Sign In</button>
+        <button>Log In!</button>
       </form>
     </div>
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
           <p>
-            To keep connected with us please login with your personal info
+            Sudah Punya Akun?
           </p>
-          <button class="ghost" id="signIn">Sign In</button>
+          <button class="ghost" id="signIn">LOG IN!</button>
         </div>
         <div class="overlay-panel overlay-right">
-          <h1>Hello, Friend!</h1>
-          <p>Enter your personal details and start journey with us</p>
+          <h1>Belum Punya Akun?</h1>
+          <p>Tekan tombol SIGN UP untuk membuat akun!</p>
           <button class="ghost" id="signUp">Sign Up</button>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    const signUpButton = document.getElementById("signUp");
+    const signInButton = document.getElementById("signIn");
+    const container = document.getElementById("container");
+
+    signUpButton.addEventListener("click", () => {
+      container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener("click", () => {
+      container.classList.remove("right-panel-active");
+    });
+  </script>
 
   @if(session('success'))
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.6/dist/sweetalert2.all.min.js"></script>
