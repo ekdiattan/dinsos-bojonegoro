@@ -58,6 +58,6 @@ class FormController extends Controller
             ]);
         }
 
-        return redirect('/form');
+        return redirect('/form')->with('success', 'The respondent has been registered successfully!');
     }
 }

@@ -13,7 +13,7 @@
             <i class="ti-settings"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-            <a class="dropdown-item" href="/admin">
+            <a class="dropdown-item" href="/logout">
               <i class="ti-power-off text-primary"></i>
               Logout
             </a>

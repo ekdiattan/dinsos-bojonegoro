@@ -128,5 +128,6 @@
             <div class="row">Hak Cipta © {{$year}} Dinas Sosial Kabupaten Bojonegoro</div>
         </div>
     </footer>
+    <script src="{{ asset('js/alert.js') }}"></script>
 </body>
 </html>

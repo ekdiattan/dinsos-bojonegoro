@@ -13,14 +13,14 @@ use App\Http\Controllers\PertanyaanController;
 Route::get( '/', [DashboardController::class, 'index']);
 
 Route::post('/login', [AuthController::class, 'loginPost']);
-Route::get('/admin', [AuthController::class, 'view']);
+Route::get('/admin', [AuthController::class, 'view'])->name('login');
 
 Route::post('/register', [UserController::class, 'storeuser']);
 
 Route::get('/form', [FormController::class, 'index']);
 Route::post('/formsurvey', [FormController::class, 'store']);
 
-Route::get('/layanan',[ LayananController::class,'view']);
+Route::get('/layanan',[LayananController::class,'view']);
 
 // Admin
 Route::group(['middleware' => 'auth'], function () 
@@ -37,5 +37,6 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('/tambahpertanyaan', [PertanyaanController::class, 'tambahpertanyaanview']);
     Route::post('/tambahpertanyaan', [PertanyaanController::class, 'tambahpertanyaan']);
     Route::get('/datapertanyaan/delete/{id}', [PertanyaanController::class, 'deletepertanyaan']);
+        
 });
 

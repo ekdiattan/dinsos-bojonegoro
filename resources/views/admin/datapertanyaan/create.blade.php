@@ -17,5 +17,5 @@
       </div>
     </div>
   </div>
-  
+  <script src="{{ asset('js/alert.js') }}"></script>
   @endsection
