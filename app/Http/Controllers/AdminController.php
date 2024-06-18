@@ -11,7 +11,8 @@ class AdminController extends Controller
     public function dashboard()
     {
         $nilai = Nilai::all();
-        $profileResponden = ProfileResponden::paginate(5);
+
+        $profileResponden = ProfileResponden::latest()->paginate(5);
         
         return view('admin.dataresponden.index',['title' => 'Dinas Sosial Bojonegoro', 'profileResponden' => $profileResponden, 'nilai' => $nilai]);
     }

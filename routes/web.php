@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth'], function ()
     Route::get('/datapertanyaan', [PertanyaanController::class, 'view']);
     Route::get('/tambahpertanyaan', [PertanyaanController::class, 'tambahpertanyaanview']);
     Route::post('/tambahpertanyaan', [PertanyaanController::class, 'tambahpertanyaan']);
+    Route::get('/datapertanyaan/edit/{id}', [PertanyaanController::class, 'editpertanyaanview']);
+    Route::post('/datapertanyaan/edit/{id}', [PertanyaanController::class, 'editpertanyaan']);
     Route::get('/datapertanyaan/delete/{id}', [PertanyaanController::class, 'deletepertanyaan']);
         
 });

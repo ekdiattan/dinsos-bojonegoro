@@ -47,4 +47,19 @@ class PertanyaanController extends Controller
 
         return back()->with('success', 'Data Pertanyaan Has Been Deleted!');
     }
+
+    public function editpertanyaanview(int $id)
+    {
+        $pertanyaan = Pertanyaan::find($id);
+        return view('admin.datapertanyaan.edit', ['title' => 'Dinas Sosial Bojonegoro', 'pertanyaan' => $pertanyaan]);
+    }
+
+    public function editpertanyaan(Request $request, int $id)
+    {
+
+        $pertanyaan = Pertanyaan::find($id);
+        $pertanyaan->update($request->all());
+        
+        return redirect('/datapertanyaan')->with('success', 'Data Pertanyaan Has Been Updated!');
+    }
 }

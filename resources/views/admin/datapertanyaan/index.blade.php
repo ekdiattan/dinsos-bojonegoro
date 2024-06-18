@@ -20,7 +20,7 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $item->Pertanyaan }}</td>
                   <td>
-                    <a href="">
+                    <a href="/datapertanyaan/edit/{{ $item->PertanyaanId}}">
                       <i class="ti-pencil-alt"></i>
                     </a>
                     <a href="/datapertanyaan/delete/{{ $item->PertanyaanId}}">
