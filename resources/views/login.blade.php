@@ -48,7 +48,5 @@
       </div>
     </div>
   </div>
-  <script src="{{ asset('js/alert.js') }}"></script>
-  <script src="{{ asset('js/jsindex.js') }}"></script>
 </body>
 </html>

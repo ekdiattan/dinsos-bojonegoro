@@ -11,7 +11,7 @@
     <header class="header">
         <nav>
             <div class="logo">
-                <a href="#">
+                <a href="/">
                     <img src="{{ asset('images/2.png') }}" alt="logo" />
                     <b>Pemerintahan Kabupaten Bojonegoro <br />DINAS SOSIAL</b>
                 </a>
@@ -33,39 +33,61 @@
                 <table class="table1-survey3">
                     <tr>
                         <td width="350">Nama Perusahaan / Instansi / Perorangan</td>
-                        <td><input type="text" name="NamaPerusahaanInstansiPerorangan"/></td>
+                        <td><input type="text" name="NamaPerusahaanInstansiPerorangan" required/></td>
                     </tr>
                     <tr>
                         <td>Alamat</td>
-                        <td><input type="text" name="Alamat"/></td>
+                        <td><input type="text" name="Alamat" required/></td>
                     </tr>
                     <tr>
                         <td>Pekerjaan</td>
-                        <td><input type="text" name="Pekerjaan"/></td>
+                        <td><input type="text" name="Pekerjaan" required/></td>
                     </tr>
                     <tr>
                         <td>No. Hp</td>
-                        <td><input type="number" name="NomorTelepon"/></td>
+                        <td><input type="number" name="NomorTelepon" required/></td>
                     </tr>
                     <tr>
                         <td>Umur</td>
-                        <td><input type="number" name="Umur"/></td>
+                        <td><input type="number" name="Umur" required/></td>
                     </tr>
                     <tr>
                         <td>Agama</td>
-                        <td><input type="text" name="Agama" /></td>
+                        <td>
+                            <select name="Agama" required>
+                                <option value="Islam">Islam</option>
+                                <option value="Kristen">Kristen</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Buddha">Buddha</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>Jenis Kelamin</td>
-                        <td><input type="text" name="JenisKelamin"/></td>
+                        <td>
+                            <select name="JenisKelamin" required>
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>Status Responden</td>
-                        <td><input type="text" name="StatusResponden"/></td>
+                        <td><input type="text" name="StatusResponden" required/></td>
                     </tr>
                     <tr>
                         <td>Pendidikan Terakhir</td>
-                        <td><input type="text" name="PendidikanTerakhir"/></td>
+                        <td>
+                            <select name="PendidikanTerakhir" required>
+                                <option value="SEKOLAH DASAR ( SD )">SEKOLAH DASAR ( SD )</option>
+                                <option value="SEKOLAH MENENGAH PERTAMA ( SMP )">SEKOLAH MENENGAH PERTAMA ( SMP )</option>
+                                <option value="SEKOLAH MENENGAH ATAS ( SMA )/ SEKOLAH MENENGAH KEJURUSAN ( SMK )">SEKOLAH MENENGAH ATAS ( SMA )/ SEKOLAH MENENGAH KEJURUSAN ( SMK )</option>
+                                <option value="DIPLOMA I / II">DIPLOMA I / II</option>
+                                <option value="DIPLOMA III / S1">DIPLOMA III / S1</option>
+                                <option value="S2">S2</option>
+                                <option value="S3">S3</option>
+                            </select>
+                        </td>
                     </tr>
                 </table>
         </div>
@@ -128,6 +150,33 @@
             <div class="row">Hak Cipta © {{$year}} Dinas Sosial Kabupaten Bojonegoro</div>
         </div>
     </footer>
-    <script src="{{ asset('js/alert.js') }}"></script>
+
+    @if(session('success'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.6/dist/sweetalert2.all.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+          title: 'Success!',
+          text: "{{ session('success') }}",
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+      });
+    </script>
+    @endif
+  
+    @if(session('error'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.6/dist/sweetalert2.all.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+          title: 'Error!',
+          text: "{{ session('error') }}",
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      });
+    </script>
+    @endif
 </body>
 </html>
