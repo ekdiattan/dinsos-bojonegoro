@@ -6,12 +6,9 @@ use App\Models\Nilai;
 use App\Models\Pertanyaan;
 use Illuminate\Http\Request;
 use App\Models\ProfileResponden;
-use Illuminate\Validation\Rules\In;
-use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class PertanyaanController extends Controller
 {
-
     public function view()
     {
         $pertanyaan = Pertanyaan::all();
@@ -28,10 +25,11 @@ class PertanyaanController extends Controller
         Pertanyaan::create($request->all());
         return redirect('/datapertanyaan')->with('success', 'Data Pertanyaan Berhasil Ditambahkan!');
     }
+    
     public function deletepertanyaan(int $id)
     {
         $pertanyaan = Pertanyaan::find($id);
-        
+
         $nilai = Nilai::where('NilaiPertanyaanId', $pertanyaan->PertanyaanId)->get();
 
         foreach ($nilai as $item) 
