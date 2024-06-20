@@ -7,5 +7,6 @@
     @include('templatepublic.navbar')
     @yield('contents')
     @include('templatepublic.footer')
+    @include('general.alert')
   </body>
 </html>
