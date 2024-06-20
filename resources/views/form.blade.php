@@ -1,28 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ asset('css/isimenu.css') }}" />
-  <link rel="shortcut icon" href="https://wisatabojonegoro.com/wp-content/uploads/2019/05/Logo-Kabupaten-Bojonegoro.png" />
-    <title>SKM DINAS SOSIAL</title>
-</head>
-<body>
-    <header class="header">
-        <nav>
-            <div class="logo">
-                <a href="/">
-                    <img src="{{ asset('images/2.png') }}" alt="logo" />
-                    <b>Pemerintahan Kabupaten Bojonegoro <br />DINAS SOSIAL</b>
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="/"><b>Beranda</b></a></li>
-                <li><a href=""><b>Produk Layanan</b></a></li>
-            </ul>
-        </nav>
-    </header>
-    <br />
+@extends('templatepublic.main')
+
+@section('contents')
+<br />
     <br />
     <div class="survey3">
         <div class="profil-survey3">
@@ -145,38 +124,4 @@
     <br />
     <br />
     <br />
-    <footer>
-        <div class="footer">
-            <div class="row">Hak Cipta © {{$year}} Dinas Sosial Kabupaten Bojonegoro</div>
-        </div>
-    </footer>
-
-    @if(session('success'))
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.6/dist/sweetalert2.all.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        Swal.fire({
-          title: 'Success!',
-          text: "{{ session('success') }}",
-          icon: 'success',
-          confirmButtonText: 'OK'
-        });
-      });
-    </script>
-    @endif
-  
-    @if(session('error'))
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.6/dist/sweetalert2.all.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        Swal.fire({
-          title: 'Error!',
-          text: "{{ session('error') }}",
-          icon: 'error',
-          confirmButtonText: 'OK'
-        });
-      });
-    </script>
-    @endif
-</body>
-</html>
+@endsection
