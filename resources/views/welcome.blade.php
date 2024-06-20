@@ -26,7 +26,7 @@
         </div>
         @endforeach
       </div>
-      <a href="cekdiagram.html" class="button-24">Cek Diagram</a>
+      <a href="/diagram" class="button-24">Cek Diagram</a>
       <div>
         <button class="button-24" onclick="window.dialog.showModal();">
           Mengisi Survey

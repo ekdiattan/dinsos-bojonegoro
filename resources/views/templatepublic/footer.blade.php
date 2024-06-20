@@ -1,7 +1,7 @@
 <footer>
     <div class="footer">
       <div class="row">
-        Hak Cipta © {{$year}} Dinas Sosial Kabupaten Bojonegoro
+        Hak Cipta © 2024 Dinas Sosial Kabupaten Bojonegoro
       </div>
     </div>
   </footer>

@@ -20,6 +20,8 @@ Route::post('/register', [UserController::class, 'storeuser']);
 Route::get('/form', [FormController::class, 'index']);
 Route::post('/formsurvey', [FormController::class, 'store']);
 
+Route::get('/diagram', [AdminController::class, 'viewDiagram']);
+
 Route::get('/layanan',[LayananController::class,'view']);
 
 // Admin
