@@ -1,8 +1,11 @@
 @extends('templatepublic.main')
 
 @section('contents')
-<br />
-    <br />
+<br>
+<br>
+<br>
+<br>
+<br>
     <div class="survey3">
         <div class="profil-survey3">
             <h3>Profile Responden</h3>
