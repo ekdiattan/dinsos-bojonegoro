@@ -4,7 +4,23 @@
     <div class="col-lg-12 stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Data Responden</h4>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4 class="card-title">Data Responden</h4>
+                    </div>
+                    <div class="col-lg-6">
+                        <form method="GET" action="/admin-dashboard">
+                            <div class="input-group">
+                                <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                                    <span class="input-group-text" id="search">
+                                        <i class="ti-search"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" name="search" id="navbar-search-input" placeholder="Search now" value="{{ request('search') }}" aria-label="search" aria-describedby="search">
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                         <thead>
@@ -20,6 +36,7 @@
                                 <th>Status Responden</th>
                                 <th>Pendidikan Terakhir</th>
                                 <th>Kritik Saran</th>
+                                <th>Data Bulan Masuk</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -37,6 +54,7 @@
                                 <td>{{ $item->StatusResponden }}</td>
                                 <td>{{ $item->PendidikanTerakhir }}</td>
                                 <td>{{ $item->KritikSaran }}</td>
+                                <td>{{ $months[$item->ProfileRespondenId] }}</td>
                                 <td class="text-center">
                                     <a href="/hasil-pertanyaan/{{ $item->ProfileRespondenId}}">
                                         <i class="ti-eye"></i>
@@ -50,15 +68,15 @@
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item {{ $profileResponden->onFirstPage() ? 'disabled' : '' }}">
-                                <a class="page-link" href="{{ $profileResponden->previousPageUrl() }}" tabindex="-1">Previous</a>
+                                <a class="page-link" href="{{ $profileResponden->previousPageUrl() }}&search={{ request('search') }}" tabindex="-1">Previous</a>
                             </li>
                             @for ($i = 1; $i <= $profileResponden->lastPage(); $i++)
                                 <li class="page-item {{ $profileResponden->currentPage() == $i ? 'active' : '' }}">
-                                    <a class="page-link" href="{{ $profileResponden->url($i) }}">{{ $i }}</a>
+                                    <a class="page-link" href="{{ $profileResponden->url($i) }}&search={{ request('search') }}">{{ $i }}</a>
                                 </li>
                             @endfor
                             <li class="page-item {{ $profileResponden->currentPage() == $profileResponden->lastPage() ? 'disabled' : '' }}">
-                                <a class="page-link" href="{{ $profileResponden->nextPageUrl() }}">Next</a>
+                                <a class="page-link" href="{{ $profileResponden->nextPageUrl() }}&search={{ request('search') }}">Next</a>
                             </li>
                         </ul>
                     </nav>

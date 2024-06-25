@@ -4,19 +4,54 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Nilai;
+use App\Helpers\MonthHelper;
+use Illuminate\Http\Request;
 use App\Models\ProfileResponden;
 
 class AdminController extends Controller
 {
 
-    public function dashboard()
+    public function dashboard(Request $request)
     {
+        $search = $request->input('search');
         $nilai = Nilai::all();
-
-        $profileResponden = ProfileResponden::latest()->paginate(5);
+        $profileRespondenQuery = ProfileResponden::query();
+    
+        if ($search) 
+        {
+            // Convert the month name to month number
+            $monthNumber = MonthHelper::getMonthName($search);
+            $profileRespondenQuery->whereMonth('ProfileRespondenCreatedAt', $monthNumber);
+            
+            $profileResponden = $profileRespondenQuery->latest()->paginate(5)->appends(['search' => $search]);
+    
+            if ($profileResponden->isEmpty())
+            {
+                return back()->with('error', 'Tidak ada data di bulan ' . $search .  ' !');
+            }
+        }
+        else
+        {
+            $profileResponden = $profileRespondenQuery->latest()->paginate(5);
+        }
+    
+        // Collect month names for each profileResponden item
+        $monthHelper = new MonthHelper();
+        $months = [];
+        foreach ($profileResponden as $item)
+        {
+            $months[$item->ProfileRespondenId] = $monthHelper->getMonths($item->ProfileRespondenCreatedAt->format('m'));
+        }
         
-        return view('admin.dataresponden.index',['title' => 'Dinas Sosial Bojonegoro', 'profileResponden' => $profileResponden, 'nilai' => $nilai]);
+        return view('admin.dataresponden.index', [
+            'title' => 'Dinas Sosial Bojonegoro',
+            'profileResponden' => $profileResponden,
+            'nilai' => $nilai,
+            'months' => $months,
+            'search' => $search
+        ]);
     }
+    
 
     public function detail($id)
     {
@@ -68,3 +103,4 @@ class AdminController extends Controller
         ]);
     }
 }
+
