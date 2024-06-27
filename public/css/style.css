@@ -323,3 +323,23 @@ dialog {
     margin: 0% 3%;
   }
 }
+
+.container2 {
+  background-color: #eaeaea;
+  padding: 20px;
+  margin: 3% 30px 3% 30px;
+  border-radius: 15px;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.emojipicker input {
+  display: none;
+}
+.bar img {
+  width: 70px;
+  height: 70px;
+}

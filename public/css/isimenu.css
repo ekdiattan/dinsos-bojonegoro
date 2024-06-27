@@ -619,3 +619,65 @@ textarea::-webkit-scrollbar {
     margin: 0% 3%;
   }
 }
+
+.emojipicker {
+  background-color: #ffffff; /* Warna latar belakang putih */
+  padding: 20px; /* Padding untuk menjaga jarak antara isi dan tepi kartu */
+  border-radius: 8px; /* Untuk memberikan sudut yang lebih halus pada kartu */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.containeremoji {
+  display: flex;
+  justify-content: space-around;
+}
+
+.emojipicker .containeremoji label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+.emojipicker .containeremoji label img {
+  width: 70px;
+  height: 70px;
+  opacity: 0.2;
+  transition: 200ms ease-in-out opacity, 200ms ease-in-out transform;
+}
+
+img:active {
+  transform: scale(1);
+}
+
+#one:checked ~ label[for="one"] img,
+#two:checked ~ label[for="two"] img,
+#three:checked ~ label[for="three"] img,
+#four:checked ~ label[for="four"] img {
+  opacity: 1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0) scale(1.2);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+.emoji-text {
+  margin-top: 10px;
+  font-size: 16px;
+}
+#emoji-text1 {
+  color: #6dbe45;
+}
+#emoji-text2 {
+  color: #8cc63d;
+}
+#emoji-text3 {
+  color: #fced13;
+}
+#emoji-text4 {
+  color: #f78d1f;
+}
