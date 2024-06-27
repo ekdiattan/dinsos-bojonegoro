@@ -670,14 +670,28 @@ img:active {
   font-size: 16px;
 }
 #emoji-text1 {
+  text-align: center;
   color: #6dbe45;
 }
 #emoji-text2 {
+  text-align: center;
   color: #8cc63d;
 }
 #emoji-text3 {
+  text-align: center;
   color: #fced13;
 }
 #emoji-text4 {
+  text-align: center;
   color: #f78d1f;
+}
+
+#emoji-text41 {
+  color: #f78d1f;
+  text-align: center;
+}
+#imagemot {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
