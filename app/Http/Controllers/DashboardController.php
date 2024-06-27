@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Kepuasan;
 use App\Models\ProfileResponden;
-use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class DashboardController extends Controller
 {
@@ -19,6 +18,14 @@ class DashboardController extends Controller
             return ['year' => $item[0]->ProfileRespondenCreatedAt->format('Y'), 'data' => $item->count()];
         })->sortBy('year')->values()->all();
 
+        $kepuasan = [
+            'KepuasanSangatPuas' => Kepuasan::where('KepuasanSangatPuas', 1)->count(),
+            'KepuasanPuas' => Kepuasan::where('KepuasanPuas', 1)->count(),
+            'KepuasanCukupPuas' => Kepuasan::where('KepuasanCukupPuas', 1)->count(),
+            'KepuasanTidakPuas' => Kepuasan::where('KepuasanTidakPuas', 1)->count(),
+            'TotalPuas' => Kepuasan::count()
+        ];
+        
         return view('welcome', ['title' => 'Dinas Sosial Bojonegoro', 'yearData' => $yearData, 'year' => $year]);
     }
 }

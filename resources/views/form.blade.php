@@ -118,28 +118,28 @@
             <br />
             <div class="emojipicker">
                 <div class="containeremoji">
-                  <input type="radio" name="KepuasanSangatPuas" id="one" value="1"/>
-                  <input type="radio" name="KepuasanPuas" id="two"  value="1"/>
-                  <input type="radio" name="KepuasanCukupPuas" id="three" value="1"/>
-                  <input type="radio" name="KepuasanTidakPuas" id="four" value="1"/>
-                  <label for="one">
-                    <img src="{{asset('images/emoji1.png')}}" alt="" />
-                    <div class="emoji-text" id="emoji-text1">Sangat Puas</div>
-                  </label>
-                  <label for="two">
-                    <img src="{{asset('images/emoji2.png')}}" alt="" />
-                    <div class="emoji-text" id="emoji-text2">Puas</div>
-                  </label>
-                  <label for="three">
-                    <img src="{{asset('images/emoji3.png')}}" alt="" />
-                    <div class="emoji-text" id="emoji-text3">Cukup Puas</div>
-                  </label>
-                  <label for="four">
-                    <img src="{{asset('images/emoji4.png')}}" alt="" />
-                    <div class="emoji-text" id="emoji-text4">Tidak Puas</div>
-                  </label>
+                    <input type="radio" name="KepuasanSangatPuas" id="one" value="1" class="emoji-radio" checked />
+                    <label for="one">
+                        <img src="{{asset('images/emoji1.png')}}" alt="" />
+                        <div class="emoji-text" id="emoji-text1">Sangat Puas</div>
+                    </label>
+                    <input type="radio" name="KepuasanPuas" id="two" value="1" class="emoji-radio" />
+                    <label for="two">
+                        <img src="{{asset('images/emoji2.png')}}" alt="" />
+                        <div class="emoji-text" id="emoji-text2">Puas</div>
+                    </label>
+                    <input type="radio" name="KepuasanCukupPuas" id="three" value="1" class="emoji-radio" />
+                    <label for="three">
+                        <img src="{{asset('images/emoji3.png')}}" alt="" />
+                        <div class="emoji-text" id="emoji-text3">Cukup Puas</div>
+                    </label>
+                    <input type="radio" name="KepuasanTidakPuas" id="four" value="1" class="emoji-radio" />
+                    <label for="four">
+                        <img src="{{asset('images/emoji4.png')}}" alt="" />
+                        <div class="emoji-text" id="emoji-text4">Tidak Puas</div>
+                    </label>
                 </div>
-              </div>
+            </div>
             <div class="grid-container-survey5">
                 <div class="grid-container-survey5-button">
                     <button class="button-24" role="button" type="submit">Kirim</button>
@@ -148,6 +148,9 @@
         </div>
     </div>
     </form>
+    
+    <script src="{{asset('Javascript/Form/form.js')}}"></script>
+
     <br />
     <br />
     <br />

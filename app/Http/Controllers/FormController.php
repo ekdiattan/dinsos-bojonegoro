@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kepuasan;
 use Exception;
 use App\Models\Nilai;
 use App\Models\Responden;
@@ -21,6 +22,8 @@ class FormController extends Controller
 
     public function store(Request $request)
     {
+        dd($request->all());
+        
         $nilai = [];
         $pertanyaans = Pertanyaan::all();
 
@@ -41,7 +44,6 @@ class FormController extends Controller
         {
             $nilai[$item->PertanyaanId] = [
 
-                // 'PertanyaanId' => $item->PertanyaanId,
                 'NilaiSangatBaik' => in_array($request->input("nilai_{$item->PertanyaanId}"), ['Sangat Baik']),
                 'NilaiBaik' => in_array($request->input("nilai_{$item->PertanyaanId}"), ['Baik']),
                 'NilaiKurangBaik' => in_array($request->input("nilai_{$item->PertanyaanId}"), ['Kurang Baik']),
@@ -56,7 +58,19 @@ class FormController extends Controller
                 'NilaiKurangBaik' => $nilai[$item->PertanyaanId]['NilaiKurangBaik'],
                 'NilaiTidakBaik' => $nilai[$item->PertanyaanId]['NilaiTidakBaik']
             ]);
+
+           
         }
+        if($request->KepuasanSangatPuas == 'Sangat Puas' || $request->KepuasanPuas == 'Puas' || $request->KepuasanCukupPuas == 'Cukup Puas' || $request->KepuasanTidakPuas == 'Tidak Puas') {
+            $value = 1;   
+        }
+
+        Kepuasan::create([
+            'KepuasanSangatPuas' => $value ?? 0,
+            'KepuasanPuas' => $value ?? 0,
+            'KepuasanCukupPuas' => $value ?? 0,
+            'KepuasanTidakPuas' => $value ?? 0
+         ]);
 
         return redirect('/form')->with('success', 'The respondent has been registered successfully!');
     }
