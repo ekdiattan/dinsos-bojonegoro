@@ -20,6 +20,11 @@ class ProfileResponden extends Model
     {
         return $this->hasMany(Nilai::class, 'NilaiRespondenId', 'ProfileRespondenId');
     }
+
+    public function kepuasan()
+    {
+        return $this->belongsTo(Kepuasan::class, 'KepuasanId', 'ProfileRespondenKepuasanId');
+    }
     
     const CREATED_AT = 'ProfileRespondenCreatedAt';
     const UPDATED_AT = 'ProfileRespondenUpdatedAt';

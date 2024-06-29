@@ -36,21 +36,16 @@ class PertanyaanController extends Controller
         foreach ($nilai as $item) 
         {
             $profileResponden = ProfileResponden::where('ProfileRespondenId', $item->NilaiRespondenId)->first();
-
+            
             if($profileResponden->nilai->count() == 1)
             {
+                Kepuasan::where('KepuasanProfileRespondenId', $profileResponden->ProfileRespondenId)->delete();
                 $profileResponden->delete();
             }
-            
+
             $item->delete();
         }
-        
-        $kepuasan = Kepuasan::where('KepuasanProfileRespondenId', $profileResponden->ProfileRespondenId)->first();
 
-        if($kepuasan){
-            $kepuasan->delete();
-        }
-        
         $pertanyaan->delete();
 
         return back()->with('success', 'Data Pertanyaan Has Been Deleted!');
