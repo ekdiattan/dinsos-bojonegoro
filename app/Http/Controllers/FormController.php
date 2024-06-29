@@ -22,8 +22,6 @@ class FormController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
-        
         $nilai = [];
         $pertanyaans = Pertanyaan::all();
 
@@ -58,18 +56,14 @@ class FormController extends Controller
                 'NilaiKurangBaik' => $nilai[$item->PertanyaanId]['NilaiKurangBaik'],
                 'NilaiTidakBaik' => $nilai[$item->PertanyaanId]['NilaiTidakBaik']
             ]);
-
-           
         }
-        if($request->KepuasanSangatPuas == 'Sangat Puas' || $request->KepuasanPuas == 'Puas' || $request->KepuasanCukupPuas == 'Cukup Puas' || $request->KepuasanTidakPuas == 'Tidak Puas') {
-            $value = 1;   
-        }
-
+        
         Kepuasan::create([
-            'KepuasanSangatPuas' => $value ?? 0,
-            'KepuasanPuas' => $value ?? 0,
-            'KepuasanCukupPuas' => $value ?? 0,
-            'KepuasanTidakPuas' => $value ?? 0
+            'KepuasanProfileRespondenId' => $profileResponden->ProfileRespondenId,
+            'KepuasanSangatPuas' => $request->KepuasanSangatPuas ?? 0,
+            'KepuasanPuas' => $request->KepuasanPuas ?? 0,
+            'KepuasanCukupPuas' => $request->KepuasanCukupPuas ?? 0,
+            'KepuasanTidakPuas' => $request->KepuasanTidakPuas ?? 0
          ]);
 
         return redirect('/form')->with('success', 'The respondent has been registered successfully!');

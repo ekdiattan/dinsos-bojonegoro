@@ -19,13 +19,12 @@ class DashboardController extends Controller
         })->sortBy('year')->values()->all();
 
         $kepuasan = [
-            'KepuasanSangatPuas' => Kepuasan::where('KepuasanSangatPuas', 1)->count(),
-            'KepuasanPuas' => Kepuasan::where('KepuasanPuas', 1)->count(),
-            'KepuasanCukupPuas' => Kepuasan::where('KepuasanCukupPuas', 1)->count(),
-            'KepuasanTidakPuas' => Kepuasan::where('KepuasanTidakPuas', 1)->count(),
-            'TotalPuas' => Kepuasan::count()
+            'KepuasanSangatPuasPersen' => Kepuasan::count() > 0 ? number_format((Kepuasan::where('KepuasanSangatPuas', 1)->count() / Kepuasan::count()) * 100, 2) : 0,
+            'KepuasanPuasPersen' => Kepuasan::count() > 0 ? number_format((Kepuasan::where('KepuasanPuas', 1)->count() / Kepuasan::count()) * 100, 2) : 0,
+            'KepuasanCukupPuasPersen' => Kepuasan::count() > 0 ? number_format((Kepuasan::where('KepuasanCukupPuas', 1)->count() / Kepuasan::count()) * 100, 2) : 0,
+            'KepuasanTidakPuasPersen' => Kepuasan::count() > 0 ? number_format((Kepuasan::where('KepuasanTidakPuas', 1)->count() / Kepuasan::count()) * 100, 2) : 0
         ];
         
-        return view('welcome', ['title' => 'Dinas Sosial Bojonegoro', 'yearData' => $yearData, 'year' => $year]);
+        return view('welcome', ['title' => 'Dinas Sosial Bojonegoro', 'yearData' => $yearData, 'year' => $year, 'kepuasan' => $kepuasan]);
     }
 }

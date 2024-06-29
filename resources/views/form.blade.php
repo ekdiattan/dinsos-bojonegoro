@@ -31,7 +31,15 @@
                     </tr>
                     <tr>
                         <td>Umur</td>
-                        <td><input type="number" name="Umur" required/></td>
+                        <td>
+                            <select name="Umur" required>
+                                <option value="<20"> Kurang dari 20</option>
+                                <option value="20-29">20 - 29</option>
+                                <option value="30-39">30 - 39</option>
+                                <option value="40-49">40 - 49</option>
+                                <option value=">=50">Lebih dari 50</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>Agama</td>

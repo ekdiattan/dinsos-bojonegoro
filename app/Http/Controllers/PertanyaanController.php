@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kepuasan;
 use App\Models\Nilai;
 use App\Models\Pertanyaan;
 use Illuminate\Http\Request;
 use App\Models\ProfileResponden;
+use App\Models\Responden;
 
 class PertanyaanController extends Controller
 {
@@ -30,7 +32,7 @@ class PertanyaanController extends Controller
     {
         $pertanyaan = Pertanyaan::find($id);
         $nilai = Nilai::where('NilaiPertanyaanId', $pertanyaan->PertanyaanId)->get();
-        
+
         foreach ($nilai as $item) 
         {
             $profileResponden = ProfileResponden::where('ProfileRespondenId', $item->NilaiRespondenId)->first();
@@ -42,7 +44,13 @@ class PertanyaanController extends Controller
             
             $item->delete();
         }
+        
+        $kepuasan = Kepuasan::where('KepuasanProfileRespondenId', $profileResponden->ProfileRespondenId)->first();
 
+        if($kepuasan){
+            $kepuasan->delete();
+        }
+        
         $pertanyaan->delete();
 
         return back()->with('success', 'Data Pertanyaan Has Been Deleted!');
