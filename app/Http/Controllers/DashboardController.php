@@ -11,7 +11,7 @@ class DashboardController extends Controller
     {
         $year = date('Y');
         $profileResponden = ProfileResponden::all();
-
+        
         $yearData = $profileResponden->groupBy(function ($item) {
             return date('Y', strtotime($item->ProfileRespondenCreatedAt));
         })->map(function ($item) {

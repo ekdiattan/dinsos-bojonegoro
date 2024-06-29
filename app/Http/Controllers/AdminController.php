@@ -65,7 +65,46 @@ class AdminController extends Controller
     {
         $currentYear = Carbon::now()->year;
         $nilai = Nilai::whereYear('NilaiCreatedAt', $currentYear)->get();
-    
+        
+        $getDataGenderSame = ProfileResponden::select('JenisKelamin')
+        ->get()
+        ->groupBy('JenisKelamin')
+        ->map(function ($genderGroup) {
+            return $genderGroup->count();
+        });
+        
+        $jenisKelamin = [
+            'JenisKelamin' => $getDataGenderSame->keys(),
+            'TotalData' => $getDataGenderSame->sum(),
+            'Data Jenis Kelamin' => $getDataGenderSame
+        ];
+
+        $getAge = ProfileResponden::select('Umur')
+        ->get()
+        ->groupBy('Umur')
+        ->map(function ($ageGroup) {
+            return $ageGroup->count();
+        });
+
+        $age = [
+            'Umur' => $getAge->keys(),
+            'TotalData' => $getAge->sum(),
+            'Data Umur' => $getAge
+        ];
+
+        $getPendidikan = ProfileResponden::select('PendidikanTerakhir')
+        ->get()
+        ->groupBy('PendidikanTerakhir')
+        ->map(function ($pendidikanGroup) {
+            return $pendidikanGroup->count();
+        });
+
+        $pendidikan = [
+            'Pendidikan' => $getPendidikan->keys(),
+            'TotalData' => $getPendidikan->sum(),
+            'Data Pendidikan' => $getPendidikan
+        ];
+        
         $data = [
             'SangatBaik' => [],
             'Baik' => [],
@@ -96,10 +135,13 @@ class AdminController extends Controller
                 $data['TidakBaik'][$month]++;
             }
         }
-        // dd($data);
+
         return view('public.diagram', [
             'title' => 'Dinas Sosial Bojonegoro',
             'data' => $data,
+            'jenisKelamin' => $jenisKelamin,
+            'umur' => $age,
+            'pendidikan' => $pendidikan
         ]);
     }
 }

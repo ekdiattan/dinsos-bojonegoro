@@ -8,5 +8,6 @@
     @yield('contents')
     @include('templatepublic.footer')
     @include('general.alert')
+    @include('templatepublic.script')
   </body>
 </html>
